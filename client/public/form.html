@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biotechnology Learning Platform - Feedback Form</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-main: #020617;
+            --bg-card: #0f172a;
+            --bg-card-soft: #020617;
+            --border-subtle: #1e293b;
+            --accent: #38bdf8;
+            --accent-soft: rgba(56, 189, 248, 0.15);
+            --text-main: #e5e7eb;
+            --text-soft: #9ca3af;
+            --text-muted: #6b7280;
+            --danger: #f97373;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: radial-gradient(circle at top, #1e293b 0, #020617 45%, #000 100%);
+            color: var(--text-main);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: linear-gradient(to right, rgba(15,23,42,0.9), rgba(30,64,175,0.85));
+            border-bottom: 1px solid #1e293b;
+            text-align: center;
+            padding: 28px 20px;
+            box-shadow: 0 15px 40px rgba(15,23,42,0.8);
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            backdrop-filter: blur(16px);
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #f9fafb;
+            margin-bottom: 6px;
+            letter-spacing: 0.03em;
+        }
+
+        .header p {
+            font-size: 0.9rem;
+            color: var(--text-soft);
+        }
+
+        .form-wrapper {
+            max-width: 820px;
+            margin: 32px auto 40px;
+            padding: 0 16px 40px;
+        }
+
+        .card {
+            background: radial-gradient(circle at top left, rgba(56,189,248,0.05), transparent 55%),
+                        radial-gradient(circle at bottom right, rgba(129,140,248,0.05), transparent 55%),
+                        var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 14px;
+            padding: 24px 24px 26px;
+            margin-bottom: 18px;
+            box-shadow: 0 18px 45px rgba(15,23,42,0.85);
+        }
+
+        .card-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #e5e7eb;
+            margin-bottom: 18px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(148,163,184,0.3);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .card-title::before {
+            content: "";
+            width: 30px;
+            height: 2px;
+            border-radius: 999px;
+            background: linear-gradient(to right, var(--accent), transparent);
+        }
+
+        .question {
+            margin-bottom: 22px;
+        }
+
+        .question:last-child {
+            margin-bottom: 0;
+        }
+
+        .question-label {
+            display: block;
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: var(--text-main);
+            margin-bottom: 8px;
+        }
+
+        .required {
+            color: var(--danger);
+        }
+
+        input[type="text"],
+        input[type="email"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px 12px;
+            font-family: inherit;
+            font-size: 0.9rem;
+            color: var(--text-main);
+            background: rgba(15,23,42,0.85);
+            border: 1px solid #1f2937;
+            border-radius: 8px;
+            outline: none;
+            transition: border 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, transform 0.05s ease;
+        }
+
+        input[type="text"]::placeholder,
+        input[type="email"]::placeholder,
+        textarea::placeholder {
+            color: var(--text-muted);
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        select:focus,
+        textarea:focus {
+            border-color: var(--accent);
+            background: #020617;
+            box-shadow: 0 0 0 1px rgba(56,189,248,0.3), 0 16px 32px rgba(15,23,42,0.9);
+            transform: translateY(-1px);
+        }
+
+        select {
+            cursor: pointer;
+            background-image: linear-gradient(45deg, transparent 50%, var(--accent) 50%), 
+                              linear-gradient(135deg, var(--accent) 50%, transparent 50%);
+            background-position: calc(100% - 14px) 12px, calc(100% - 9px) 12px;
+            background-size: 6px 6px, 6px 6px;
+            background-repeat: no-repeat;
+        }
+
+        textarea {
+            min-height: 90px;
+            resize: vertical;
+        }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .options-list {
+            list-style: none;
+        }
+
+        .options-list li {
+            margin-bottom: 6px;
+        }
+
+        .options-list li:last-child {
+            margin-bottom: 0;
+        }
+
+        .options-list label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.86rem;
+            color: var(--text-soft);
+            cursor: pointer;
+            padding: 6px 8px;
+            border-radius: 6px;
+            transition: background 0.15s ease, color 0.15s ease, transform 0.05s ease;
+        }
+
+        .options-list label:hover {
+            background: rgba(15,23,42,0.85);
+            color: var(--text-main);
+            transform: translateY(-0.5px);
+        }
+
+        .options-list input[type="radio"],
+        .options-list input[type="checkbox"] {
+            accent-color: var(--accent);
+            width: 15px;
+            height: 15px;
+            cursor: pointer;
+        }
+
+        .rating-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px dashed rgba(148,163,184,0.45);
+            gap: 10px;
+        }
+
+        .rating-row:last-child {
+            border-bottom: none;
+        }
+
+        .rating-text {
+            font-size: 0.86rem;
+            color: var(--text-main);
+            flex: 1;
+            min-width: 0;
+        }
+
+        .rating-options {
+            display: flex;
+            gap: 14px;
+            flex-shrink: 0;
+            padding-left: 10px;
+        }
+
+        .rating-options label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            color: var(--text-soft);
+        }
+
+        .rating-options input[type="radio"] {
+            accent-color: var(--accent);
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+        }
+
+        .rating-options .num {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        .scale-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            padding: 0 2px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+            padding-top: 8px;
+        }
+
+        .btn {
+            padding: 9px 24px;
+            font-family: inherit;
+            font-size: 0.88rem;
+            font-weight: 500;
+            border-radius: 999px;
+            cursor: pointer;
+            border: none;
+            transition: background 0.15s ease, transform 0.08s ease, box-shadow 0.15s ease, color 0.15s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+        }
+
+        .btn-submit {
+            background: linear-gradient(to right, #38bdf8, #6366f1);
+            color: #0b1120;
+            box-shadow: 0 18px 40px rgba(37,99,235,0.6);
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 24px 55px rgba(37,99,235,0.75);
+        }
+
+        .btn-reset {
+            background: rgba(15,23,42,0.6);
+            color: var(--text-soft);
+            border: 1px solid #4b5563;
+        }
+
+        .btn-reset:hover {
+            background: rgba(15,23,42,0.9);
+            color: var(--text-main);
+            transform: translateY(-1px);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 18px 16px 26px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        @media (max-width: 600px) {
+            .two-col {
+                grid-template-columns: 1fr;
+            }
+
+            .card {
+                padding: 20px 16px 22px;
+            }
+
+            .rating-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+
+            .rating-options {
+                align-self: stretch;
+                justify-content: space-between;
+                padding-left: 0;
+            }
+
+            .buttons {
+                flex-direction: column-reverse;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .header h1 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <h1>Biotechnology Learning Platform — Feedback Form</h1>
+        <p>Help us improve your learning experience</p>
+    </header>
+
+    <main class="form-wrapper">
+        <form action="#" method="post">
+
+            <!-- Section 1: User Information -->
+            <div class="card">
+                <h2 class="card-title">1. User Information</h2>
+
+                <div class="two-col">
+                    <div class="question">
+                        <label class="question-label" for="fullName">
+                            Full Name <span class="required">*</span>
+                        </label>
+                        <input type="text" id="fullName" name="fullName" placeholder="Your full name" required>
+                    </div>
+                    <div class="question">
+                        <label class="question-label" for="email">
+                            Email <span class="required">*</span>
+                        </label>
+                        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <label class="question-label" for="education">
+                        Education Level <span class="required">*</span>
+                    </label>
+                    <select id="education" name="education" required>
+                        <option value="" disabled selected>-- Select --</option>
+                        <option value="school">School Student</option>
+                        <option value="undergraduate">Undergraduate</option>
+                        <option value="postgraduate">Postgraduate</option>
+                        <option value="research">Research Scholar</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Section 2: Experience Rating -->
+            <div class="card">
+                <h2 class="card-title">2. Experience Rating</h2>
+
+                <div class="scale-labels">
+                    <span>1 = Very Poor</span>
+                    <span>2 = Poor</span>
+                    <span>3 = Average</span>
+                    <span>4 = Good</span>
+                    <span>5 = Excellent</span>
+                </div>
+
+                <div class="rating-row">
+                    <span class="rating-text">Content clarity</span>
+                    <div class="rating-options">
+                        <label><input type="radio" name="r1" value="1" required><span class="num">1</span></label>
+                        <label><input type="radio" name="r1" value="2"><span class="num">2</span></label>
+                        <label><input type="radio" name="r1" value="3"><span class="num">3</span></label>
+                        <label><input type="radio" name="r1" value="4"><span class="num">4</span></label>
+                        <label><input type="radio" name="r1" value="5"><span class="num">5</span></label>
+                    </div>
+                </div>
+
+                <div class="rating-row">
+                    <span class="rating-text">Personalization effectiveness</span>
+                    <div class="rating-options">
+                        <label><input type="radio" name="r2" value="1" required><span class="num">1</span></label>
+                        <label><input type="radio" name="r2" value="2"><span class="num">2</span></label>
+                        <label><input type="radio" name="r2" value="3"><span class="num">3</span></label>
+                        <label><input type="radio" name="r2" value="4"><span class="num">4</span></label>
+                        <label><input type="radio" name="r2" value="5"><span class="num">5</span></label>
+                    </div>
+                </div>
+
+                <div class="rating-row">
+                    <span class="rating-text">AI explanation quality</span>
+                    <div class="rating-options">
+                        <label><input type="radio" name="r3" value="1" required><span class="num">1</span></label>
+                        <label><input type="radio" name="r3" value="2"><span class="num">2</span></label>
+                        <label><input type="radio" name="r3" value="3"><span class="num">3</span></label>
+                        <label><input type="radio" name="r3" value="4"><span class="num">4</span></label>
+                        <label><input type="radio" name="r3" value="5"><span class="num">5</span></label>
+                    </div>
+                </div>
+
+                <div class="rating-row">
+                    <span class="rating-text">Quiz difficulty balance</span>
+                    <div class="rating-options">
+                        <label><input type="radio" name="r4" value="1" required><span class="num">1</span></label>
+                        <label><input type="radio" name="r4" value="2"><span class="num">2</span></label>
+                        <label><input type="radio" name="r4" value="3"><span class="num">3</span></label>
+                        <label><input type="radio" name="r4" value="4"><span class="num">4</span></label>
+                        <label><input type="radio" name="r4" value="5"><span class="num">5</span></label>
+                    </div>
+                </div>
+
+                <div class="rating-row">
+                    <span class="rating-text">Overall satisfaction</span>
+                    <div class="rating-options">
+                        <label><input type="radio" name="r5" value="1" required><span class="num">1</span></label>
+                        <label><input type="radio" name="r5" value="2"><span class="num">2</span></label>
+                        <label><input type="radio" name="r5" value="3"><span class="num">3</span></label>
+                        <label><input type="radio" name="r5" value="4"><span class="num">4</span></label>
+                        <label><input type="radio" name="r5" value="5"><span class="num">5</span></label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 3: Platform Usage -->
+            <div class="card">
+                <h2 class="card-title">3. Platform Usage</h2>
+
+                <div class="question">
+                    <span class="question-label">
+                        How often do you use the platform? <span class="required">*</span>
+                    </span>
+                    <ul class="options-list">
+                        <li><label><input type="radio" name="frequency" value="daily" required> Daily</label></li>
+                        <li><label><input type="radio" name="frequency" value="weekly"> Weekly</label></li>
+                        <li><label><input type="radio" name="frequency" value="occasionally"> Occasionally</label></li>
+                    </ul>
+                </div>
+
+                <div class="question">
+                    <span class="question-label">
+                        Did the AI adapt to your learning level? <span class="required">*</span>
+                    </span>
+                    <ul class="options-list">
+                        <li><label><input type="radio" name="aiAdapt" value="yes" required> Yes</label></li>
+                        <li><label><input type="radio" name="aiAdapt" value="somewhat"> Somewhat</label></li>
+                        <li><label><input type="radio" name="aiAdapt" value="no"> No</label></li>
+                    </ul>
+                </div>
+
+                <div class="question">
+                    <span class="question-label">
+                        How many hours per week do you spend on the platform?
+                    </span>
+                    <ul class="options-list">
+                        <li><label><input type="radio" name="hoursPerWeek" value="0-2"> 0-2 hrs</label></li>
+                        <li><label><input type="radio" name="hoursPerWeek" value="3-4"> 3-4 hrs</label></li>
+                        <li><label><input type="radio" name="hoursPerWeek" value="5-6"> 5-6 hrs</label></li>
+                        <li><label><input type="radio" name="hoursPerWeek" value="6-12"> 6-12 hrs</label></li>
+                        <li><label><input type="radio" name="hoursPerWeek" value="12+"> 12+ hrs</label></li>
+                    </ul>
+                </div>
+
+                <div class="question">
+                    <span class="question-label" for="primaryGoal">
+                        What is your primary goal for using this platform?
+                    </span>
+                    <ul class="options-list">
+                        <li><label><input type="radio" name="primaryGoal" value="Exam Preparation"> Exam Preparation</label></li>
+                        <li><label><input type="radio" name="primaryGoal" value="Research Support"> Research Support</label></li>
+                        <li><label><input type="radio" name="primaryGoal" value="Self-Study"> Self-Study</label></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Section 4: Feature Feedback -->
+            <div class="card">
+                <h2 class="card-title">4. Feature Feedback</h2>
+
+                <div class="question">
+                    <span class="question-label">
+                        Which features did you find most useful? (Select all that apply)
+                    </span>
+                    <ul class="options-list">
+                        <li><label><input type="checkbox" name="features" value="adaptive"> Adaptive Learning Modules</label></li>
+                        <li><label><input type="checkbox" name="features" value="quiz"> Quiz &amp; Assessment</label></li>
+                        <li><label><input type="checkbox" name="features" value="learningPath"> Learning Path Recommendation</label></li>
+                        <li><label><input type="checkbox" name="features" value="doubt"> Doubt Clarification</label></li>
+                        <li><label><input type="checkbox" name="features" value="progress"> Progress Tracking</label></li>
+                    </ul>
+                </div>
+
+                <div class="question">
+                    <span class="question-label">
+                        Which feature needs the most improvement? <span class="required">*</span>
+                    </span>
+                    <ul class="options-list">
+                        <li><label><input type="radio" name="improveFeature" value="adaptive" required> Adaptive Learning Modules</label></li>
+                        <li><label><input type="radio" name="improveFeature" value="quiz"> Quiz &amp; Assessment</label></li>
+                        <li><label><input type="radio" name="improveFeature" value="learningPath"> Learning Path Recommendation</label></li>
+                        <li><label><input type="radio" name="improveFeature" value="doubt"> Doubt Clarification</label></li>
+                        <li><label><input type="radio" name="improveFeature" value="progress"> Progress Tracking</label></li>
+                    </ul>
+                </div>
+
+                <div class="question">
+                    <label class="question-label" for="featureRequest">
+                        Is there a feature you wish the platform had?
+                    </label>
+                    <textarea id="featureRequest" name="featureRequest" placeholder="Describe a feature that would help your learning..."></textarea>
+                </div>
+            </div>
+
+            <!-- Section 5: AI & Content Questions -->
+            <div class="card">
+                <h2 class="card-title">5. AI &amp; Content Quality</h2>
+
+                <div class="question">
+                    <span class="question-label">
+                        How well did the AI understand your doubts? <span class="required">*</span>
+                    </span>
+                    <ul class="options-list">
+                        <li><label><input type="radio" name="aiUnderstand" value="very-well" required> Very well — answered accurately every time</label></li>
+                        <li><label><input type="radio" name="aiUnderstand" value="mostly"> Mostly — a few misunderstandings</label></li>
+                        <li><label><input type="radio" name="aiUnderstand" value="sometimes"> Sometimes — needed to rephrase often</label></li>
+                        <li><label><input type="radio" name="aiUnderstand" value="poorly"> Poorly — rarely understood my questions</label></li>
+                    </ul>
+                </div>
+
+                <div class="question">
+                    <span class="question-label">
+                        Were the quizzes aligned with the content taught? <span class="required">*</span>
+                    </span>
+                    <ul class="options-list">
+                        <li><label><input type="radio" name="quizAlign" value="yes" required> Yes, perfectly aligned</label></li>
+                        <li><label><input type="radio" name="quizAlign" value="mostly"> Mostly aligned</label></li>
+                        <li><label><input type="radio" name="quizAlign" value="no"> No, often mismatched</label></li>
+                    </ul>
+                </div>
+
+                <div class="question">
+                    <label class="question-label" for="topicDifficult">
+                        Which biotechnology topic did you find most difficult to understand?
+                    </label>
+                    <input type="text" id="topicDifficult" name="topicDifficult" placeholder="e.g., Genomics, CRISPR, Proteomics...">
+                </div>
+
+                <div class="question">
+                    <label class="question-label" for="contentGap">
+                        Were there any content gaps or topics you expected but didn't find?
+                    </label>
+                    <textarea id="contentGap" name="contentGap" placeholder="Mention any missing topics or areas with insufficient depth..."></textarea>
+                </div>
+            </div>
+
+            <!-- Section 6: Open Feedback -->
+            <div class="card">
+                <h2 class="card-title">6. Open Feedback</h2>
+
+                <div class="question">
+                    <label class="question-label" for="likedMost">
+                        What did you like most about the platform?
+                    </label>
+                    <textarea id="likedMost" name="likedMost" placeholder="Tell us what worked well for you..."></textarea>
+                </div>
+
+                <div class="question">
+                    <label class="question-label" for="improvements">
+                        What improvements do you suggest?
+                    </label>
+                    <textarea id="improvements" name="improvements" placeholder="Share specific suggestions for improvement..."></textarea>
+                </div>
+
+                <div class="question">
+                    <label class="question-label" for="learningImpact">
+                        How has this platform impacted your understanding of biotechnology?
+                    </label>
+                    <textarea id="learningImpact" name="learningImpact" placeholder="Describe any changes in your learning or confidence level..."></textarea>
+                </div>
+            </div>
+
+            <!-- Section 7: Recommendation -->
+            <div class="card">
+                <h2 class="card-title">7. Recommendation</h2>
+
+                <div class="question">
+                    <span class="question-label">
+                        Would you recommend this platform to others? <span class="required">*</span>
+                    </span>
+                    <ul class="options-list">
+                        <li><label><input type="radio" name="recommend" value="yes" required> Yes</label></li>
+                        <li><label><input type="radio" name="recommend" value="maybe"> Maybe</label></li>
+                        <li><label><input type="radio" name="recommend" value="no"> No</label></li>
+                    </ul>
+                </div>
+
+                <div class="question">
+                    <label class="question-label" for="recommendReason">
+                        Why or why not?
+                    </label>
+                    <textarea id="recommendReason" name="recommendReason" placeholder="Please share the reason for your choice above..."></textarea>
+                </div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="card">
+                <div class="buttons">
+                    <button type="reset" class="btn btn-reset">Reset</button>
+                    <button type="submit" class="btn btn-submit">Submit Feedback</button>
+                </div>
+            </div>
+
+        </form>
+    </main>
+
+    <footer class="footer">
+        <p>This feedback helps improve your personalized biotechnology learning experience.</p>
+    </footer>
+
+</body>
+</html>

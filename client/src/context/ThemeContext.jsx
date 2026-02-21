@@ -1,24 +1,30 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+// src/context/ThemeContext.jsx
+import React, { createContext, useContext, useEffect, useState } from "react";
 
 const ThemeContext = createContext(null);
 
 export const ThemeProvider = ({ children }) => {
   const [isDark, setIsDark] = useState(() => {
-    const saved = localStorage.getItem('biolearn_theme');
-    return saved ? saved === 'dark' : true; // Default dark
+    if (typeof window === "undefined") return true;
+    const saved = localStorage.getItem("biolearn_theme");
+    if (saved === "dark") return true;
+    if (saved === "light") return false;
+    // default: dark
+    return true;
   });
 
   useEffect(() => {
-    const root = document.documentElement;
+    const root = window.document.documentElement;
     if (isDark) {
-      root.classList.remove('light');
+      root.classList.add("dark");
+      localStorage.setItem("biolearn_theme", "dark");
     } else {
-      root.classList.add('light');
+      root.classList.remove("dark");
+      localStorage.setItem("biolearn_theme", "light");
     }
-    localStorage.setItem('biolearn_theme', isDark ? 'dark' : 'light');
   }, [isDark]);
 
-  const toggleTheme = () => setIsDark(prev => !prev);
+  const toggleTheme = () => setIsDark((prev) => !prev);
 
   return (
     <ThemeContext.Provider value={{ isDark, toggleTheme }}>
@@ -28,9 +34,7 @@ export const ThemeProvider = ({ children }) => {
 };
 
 export const useTheme = () => {
-  const context = useContext(ThemeContext);
-  if (!context) throw new Error('useTheme must be used within ThemeProvider');
-  return context;
+  const ctx = useContext(ThemeContext);
+  if (!ctx) throw new Error("useTheme must be used within ThemeProvider");
+  return ctx;
 };
-
-export default ThemeContext;

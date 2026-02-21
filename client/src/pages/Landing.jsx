@@ -88,7 +88,7 @@ const Landing = () => {
     {
       icon: Brain,
       title: 'AI-Powered Learning',
-      description: 'GPT-4 generates personalized biotechnology modules tailored to your education level—School, UG, or PG.',
+      description: 'GPT 4 generates personalized biotechnology modules tailored to your education level—School, UG, or PG.',
       gradient: 'bg-gradient-to-br from-emerald-500 to-teal-600'
     },
     {
@@ -114,7 +114,7 @@ const Landing = () => {
   const stats = [
     { value: '500+', label: 'Biotech Topics' },
     { value: '3', label: 'Learning Levels' },
-    { value: 'GPT-4', label: 'Powered by' },
+    { value: 'GPT 4', label: 'Powered by' },
     { value: '100%', label: 'Adaptive' }
   ];
 
@@ -146,7 +146,7 @@ const Landing = () => {
       <section className="relative z-10 max-w-7xl mx-auto px-6 pt-16 pb-24 text-center">
         <div className="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-4 py-2 mb-8 animate-fade-in">
           <Zap className="w-4 h-4 text-emerald-400" />
-          <span className="text-emerald-400 text-sm font-medium">Powered by GPT-4 AI Technology</span>
+          <span className="text-emerald-400 text-sm font-medium">Powered by GPT 4 AI Technology</span>
         </div>
 
         <h1 className="font-display font-bold text-5xl sm:text-7xl text-white leading-tight mb-6 animate-slide-up">
@@ -209,7 +209,7 @@ const Landing = () => {
         <div className="space-y-6">
           {[
             { step: '01', title: 'Choose Your Topic & Level', desc: 'Enter any biotechnology topic and select your academic level—School, UG, or PG.', icon: BookOpen },
-            { step: '02', title: 'Get AI-Generated Content', desc: 'GPT-4 creates a structured module with introduction, core concepts, applications, and summary.', icon: Brain },
+            { step: '02', title: 'Get AI-Generated Content', desc: 'GPT 4 creates a structured module with introduction, core concepts, applications, and summary.', icon: Brain },
             { step: '03', title: 'Take Adaptive Quizzes', desc: 'Test your knowledge with auto-generated MCQs. The system adapts based on your performance.', icon: Zap },
           ].map(({ step, title, desc, icon: Icon }) => (
             <div key={step} className="glass-card p-6 flex items-start gap-5 hover:border-emerald-500/30 transition-all duration-300">

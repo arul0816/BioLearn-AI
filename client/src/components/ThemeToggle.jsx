@@ -1,3 +1,4 @@
+// src/components/ThemeToggle.jsx
 import React from 'react';
 import { Sun, Moon } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
@@ -13,15 +14,16 @@ const ThemeToggle = ({ className = '' }) => {
       } ${className}`}
       aria-label="Toggle theme"
     >
-      <div className={`absolute top-1 w-5 h-5 rounded-full transition-all duration-300 flex items-center justify-center ${
-        isDark 
-          ? 'left-1 bg-slate-900' 
-          : 'left-8 bg-emerald-500'
-      }`}>
-        {isDark 
-          ? <Moon className="w-3 h-3 text-slate-300" />
-          : <Sun className="w-3 h-3 text-white" />
-        }
+      <div
+        className={`absolute top-1 w-5 h-5 rounded-full transition-all duration-300 flex items-center justify-center ${
+          isDark ? 'left-1 bg-slate-900' : 'left-8 bg-emerald-500'
+        }`}
+      >
+        {isDark ? (
+          <Moon className="w-3 h-3 text-slate-300" />
+        ) : (
+          <Sun className="w-3 h-3 text-white" />
+        )}
       </div>
     </button>
   );

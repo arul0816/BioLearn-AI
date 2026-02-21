@@ -10,6 +10,7 @@ import GenerateModule from './pages/GenerateModule';
 import Quiz from './pages/Quiz';
 import Analytics from './pages/Analytics';
 import Profile from './pages/Profile';
+import PersonalizedPath from "./pages/PersonalizedPath";
 
 const ProtectedRoute = ({ children }) => {
   const { user, loading } = useAuth();
@@ -44,6 +45,7 @@ function App() {
             <Route path="/quiz" element={<ProtectedRoute><Quiz /></ProtectedRoute>} />
             <Route path="/analytics" element={<ProtectedRoute><Analytics /></ProtectedRoute>} />
             <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+            <Route path="/personalized-path" element={<PersonalizedPath />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </BrowserRouter>
