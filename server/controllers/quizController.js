@@ -12,7 +12,7 @@ exports.generateQuiz = async (req, res, next) => {
       return res.status(400).json({ error: 'Topic and level are required.' });
     }
 
-    const prompt = `Generate ${questionCount} multiple choice questions (MCQs) about "${topic}" for ${level} level biotechnology students at ${difficulty} difficulty.
+    const prompt = `Generate ${questionCount} multiple choice questions (MCQs) about "${topic}" for ${level} level school students at ${difficulty} difficulty.
 
 Return ONLY a valid JSON array with this exact structure:
 [
@@ -31,19 +31,19 @@ Return ONLY a valid JSON array with this exact structure:
 Guidelines for ${level} level ${difficulty} difficulty:
 - School/Easy: Basic definitions, simple recall
 - School/Medium: Understanding concepts, simple application
-- UG/Easy: Conceptual understanding, terminology
-- UG/Medium: Application, mechanism understanding
-- UG/Hard: Analysis, problem-solving, research applications
-- PG/Easy: Standard graduate concepts
-- PG/Medium: Advanced mechanisms, current research
-- PG/Hard: Cutting-edge research, complex analysis, experimental design
+- UG/Easy: Strong foundation, clear explanations
+- UG/Medium: Application, problem solving, critical thinking
+- UG/Hard: Advanced problems, detailed reasoning
+- PG/Easy: Graduate-level understanding, academic vocabulary
+- PG/Medium: Deeper analysis and study habits
+- PG/Hard: Complex reasoning, project-ready thinking
 
-Make questions scientifically accurate and educationally valuable.`;
+Make questions age-appropriate, accurate, and educationally valuable.`;
 
     const completion = await openai.chat.completions.create({
       model: 'gpt-4o-mini',
       messages: [
-        { role: 'system', content: 'You are an expert biotechnology exam creator. Always respond with valid JSON only, no markdown.' },
+        { role: 'system', content: 'You are an expert school exam creator. Always respond with valid JSON only, no markdown.' },
         { role: 'user', content: prompt }
       ],
       max_tokens: 3000,

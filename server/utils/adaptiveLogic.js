@@ -1,5 +1,5 @@
 /**
- * Adaptive Learning Logic for BioLearn AI
+ * Adaptive Learning Logic for EduLearn AI
  * Determines next steps based on quiz performance
  */
 
@@ -85,14 +85,13 @@ const getNextLevel = (currentLevel) => {
  */
 const getAdvancedTopics = (topic) => {
   const topicMap = {
-    'dna': ['DNA Replication', 'Gene Expression', 'CRISPR Technology', 'Epigenetics'],
-    'pcr': ['qPCR', 'Digital PCR', 'Multiplex PCR', 'RT-PCR'],
-    'protein': ['Proteomics', 'Protein Engineering', 'Structural Biology', 'Biopharmaceuticals'],
-    'cell': ['Cell Signaling', 'Cell Cycle Regulation', 'Stem Cell Biology', 'Cell Therapy'],
-    'genetics': ['Genomics', 'Population Genetics', 'Pharmacogenomics', 'Genetic Engineering'],
-    'enzyme': ['Enzyme Engineering', 'Metabolic Engineering', 'Industrial Biotechnology', 'Biosensors'],
-    'cloning': ['Gene Cloning', 'Molecular Cloning Vectors', 'Recombinant Protein Production', 'Gene Therapy'],
-    'fermentation': ['Industrial Fermentation', 'Metabolic Engineering', 'Bioreactor Design', 'Product Purification']
+    'math': ['Algebra Practice', 'Geometry Challenges', 'Graphing and Equations', 'Problem Solving'],
+    'science': ['Physics Concepts', 'Chemistry Fundamentals', 'Biology Basics', 'Earth Science Projects'],
+    'english': ['Grammar Mastery', 'Reading Comprehension', 'Writing Practice', 'Vocabulary Building'],
+    'history': ['World History Themes', 'Historical Events', 'Civics & Government', 'Timeline Analysis'],
+    'geography': ['Maps and Regions', 'Climate Studies', 'Human Geography', 'Landforms and Resources'],
+    'computer': ['Computer Basics', 'Coding Fundamentals', 'Digital Literacy', 'Tech Projects'],
+    'language': ['Language Arts', 'Essay Writing', 'Poetry Study', 'Speech & Presentation Skills']
   };
   
   const lowerTopic = topic.toLowerCase();

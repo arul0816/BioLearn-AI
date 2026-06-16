@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { Dna, Mail, Lock, Eye, EyeOff, ArrowRight, AlertCircle } from 'lucide-react';
+import { BookOpen, Mail, Lock, Eye, EyeOff, ArrowRight, AlertCircle } from 'lucide-react';
 
 const Login = () => {
   const { login } = useAuth();
@@ -28,21 +28,21 @@ const Login = () => {
   return (
     <div className="min-h-screen bg-slate-950 flex items-center justify-center p-4">
       {/* Background */}
-      <div className="absolute inset-0 dna-background opacity-50 pointer-events-none" />
+      <div className="absolute inset-0 learning-background opacity-50 pointer-events-none" />
       
       <div className="relative w-full max-w-md">
         {/* Logo */}
         <div className="text-center mb-8">
           <Link to="/" className="inline-flex items-center gap-2.5 group">
-            <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl flex items-center justify-center shadow-lg shadow-emerald-500/30">
-              <Dna className="w-7 h-7 text-white" />
+            <div className="w-12 h-12 bg-gradient-to-br from-indigo-500 to-sky-500 rounded-2xl flex items-center justify-center shadow-lg shadow-sky-500/30">
+              <BookOpen className="w-7 h-7 text-white" />
             </div>
             <span className="font-display font-bold text-2xl text-white">
-              Bio<span className="gradient-text">Learn</span> AI
+              Edu<span className="gradient-text">Learn</span> AI
             </span>
           </Link>
           <h2 className="font-display font-semibold text-white text-2xl mt-6 mb-1">Welcome back</h2>
-          <p className="text-slate-400 text-sm">Sign in to continue your learning journey</p>
+          <p className="text-slate-400 text-sm">Sign in to continue your school learning journey</p>
         </div>
 
         {/* Card */}
@@ -119,7 +119,7 @@ const Login = () => {
         </div>
 
         <p className="text-center text-slate-600 text-xs mt-6">
-          Demo: demo@biolearn.ai / password123
+          Demo: demo@edulearn.ai / password123
         </p>
       </div>
     </div>

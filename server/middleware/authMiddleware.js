@@ -10,7 +10,7 @@ const authMiddleware = async (req, res, next) => {
     }
     
     const token = authHeader.substring(7);
-    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'biolearn_secret_key');
+    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'edulearn_secret_key');
     
     const user = await User.findByPk(decoded.id);
     if (!user) {

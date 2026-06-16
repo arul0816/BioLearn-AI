@@ -55,7 +55,7 @@ const Dashboard = () => {
     ? (completedQuizzes.reduce((acc, q) => acc + parseFloat(q.percentage || 0), 0) / completedQuizzes.length).toFixed(1)
     : 0;
 
-  const quickTopics = ['CRISPR', 'PCR Technique', 'DNA Replication', 'Gel Electrophoresis', 'Cell Culture', 'Bioinformatics'];
+  const quickTopics = ['Fractions', 'Photosynthesis', 'Grammar Rules', 'World History', 'Ecosystems', 'Basic Coding'];
 
   return (
     <div className="min-h-screen bg-slate-950">

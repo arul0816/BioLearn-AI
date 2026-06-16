@@ -4,7 +4,7 @@ const { User } = require('../models');
 const generateToken = (user) => {
   return jwt.sign(
     { id: user.id, email: user.email, role: user.role },
-    process.env.JWT_SECRET || 'biolearn_secret_key',
+    process.env.JWT_SECRET || 'edulearn_secret_key',
     { expiresIn: process.env.JWT_EXPIRES_IN || '7d' }
   );
 };
@@ -31,7 +31,7 @@ exports.register = async (req, res, next) => {
     const token = generateToken(user);
     
     res.status(201).json({
-      message: 'Registration successful! Welcome to BioLearn AI.',
+      message: 'Registration successful! Welcome to EduLearn AI.',
       token,
       user: user.toJSON()
     });

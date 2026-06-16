@@ -125,7 +125,7 @@ const Analytics = () => {
               <BarChart3 className="inline w-7 h-7 text-purple-400 mr-2" />
               Analytics
             </h1>
-            <p className="text-slate-400">Track your biotechnology learning progress</p>
+            <p className="text-slate-400">Track your school learning progress</p>
           </div>
           <button onClick={fetchAnalytics} className="btn-outline text-sm flex items-center gap-2">
             <RefreshCw className="w-4 h-4" /> Refresh

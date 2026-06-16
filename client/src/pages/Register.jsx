@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { Dna, Mail, Lock, User, Eye, EyeOff, ArrowRight, AlertCircle, GraduationCap } from 'lucide-react';
+import { BookOpen, Mail, Lock, User, Eye, EyeOff, ArrowRight, AlertCircle, GraduationCap } from 'lucide-react';
 
 const LEVELS = [
   { value: 'School', label: 'School', desc: 'Class 9-12, basic concepts' },
@@ -37,20 +37,20 @@ const Register = () => {
 
   return (
     <div className="min-h-screen bg-slate-950 flex items-center justify-center p-4">
-      <div className="absolute inset-0 dna-background opacity-50 pointer-events-none" />
+      <div className="absolute inset-0 learning-background opacity-50 pointer-events-none" />
 
       <div className="relative w-full max-w-md">
         <div className="text-center mb-8">
           <Link to="/" className="inline-flex items-center gap-2.5">
-            <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl flex items-center justify-center shadow-lg shadow-emerald-500/30">
-              <Dna className="w-7 h-7 text-white" />
+            <div className="w-12 h-12 bg-gradient-to-br from-indigo-500 to-sky-500 rounded-2xl flex items-center justify-center shadow-lg shadow-sky-500/30">
+              <BookOpen className="w-7 h-7 text-white" />
             </div>
             <span className="font-display font-bold text-2xl text-white">
-              Bio<span className="gradient-text">Learn</span> AI
+              Edu<span className="gradient-text">Learn</span> AI
             </span>
           </Link>
           <h2 className="font-display font-semibold text-white text-2xl mt-6 mb-1">Create your account</h2>
-          <p className="text-slate-400 text-sm">Start your AI-powered biotechnology journey</p>
+          <p className="text-slate-400 text-sm">Start your AI-powered school learning journey</p>
         </div>
 
         <div className="glass-card p-8">

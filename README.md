@@ -1,6 +1,6 @@
-# 🧬 BioLearn AI – LLM-Based Self-Learning Biotechnology Assistant
+# 🎒 EduLearn AI – LLM-Based School Learning Companion
 
-An AI-powered full-stack web application for biotechnology students (School, UG, PG) that generates personalized learning modules, adaptive quizzes, and intelligent recommendations using GPT-4.
+An AI-powered full-stack web application for school learners (School, UG, PG) that generates personalized study modules, adaptive quizzes, and intelligent recommendations for Math, Science, English, Social Studies, and more.
 
 ---
 
@@ -16,7 +16,7 @@ An AI-powered full-stack web application for biotechnology students (School, UG,
 - **XP System**: Earn experience points for completing modules and quizzes
 - **JWT Authentication**: Secure login/register with protected routes
 - **Dark/Light Mode**: Toggle between themes
-- **DNA Animated Background**: Biotechnology-themed landing page
+- **Animated Background**: School-friendly landing page with subtle motion and learning energy
 
 ---
 
@@ -48,7 +48,7 @@ An AI-powered full-stack web application for biotechnology students (School, UG,
 ```bash
 # Clone the repository
 git clone <your-repo-url>
-cd biolearn-ai
+cd edulearn-ai
 
 # Install server dependencies
 cd server
@@ -66,7 +66,7 @@ npm install
 mysql -u root -p
 
 # Run the schema file
-source /path/to/biolearn-ai/database/schema.sql;
+source /path/to/edulearn-ai/database/schema.sql;
 # or
 mysql -u root -p < database/schema.sql
 ```
@@ -157,7 +157,7 @@ users (id, name, email, password, role, level, total_xp, streak, ...)
 ```bash
 npm install -g pm2
 cd server
-NODE_ENV=production pm2 start server.js --name biolearn-api
+NODE_ENV=production pm2 start server.js --name edulearn-api
 pm2 save && pm2 startup
 ```
 
@@ -176,7 +176,7 @@ server {
     
     # Frontend
     location / {
-        root /var/www/biolearn/dist;
+        root /var/www/edulearn/dist;
         try_files $uri $uri/ /index.html;
     }
     
@@ -207,7 +207,7 @@ server {
 ## 📁 Project Structure
 
 ```
-biolearn-ai/
+edulearn-ai/
 ├── client/                     # React Frontend (Vite)
 │   └── src/
 │       ├── components/         # Reusable UI components
@@ -247,4 +247,4 @@ MIT License - Free to use for educational purposes.
 
 ---
 
-Built with ❤️ for biotechnology students everywhere 🧬"# KPR" 
+Built with ❤️ for school learners everywhere 🎓

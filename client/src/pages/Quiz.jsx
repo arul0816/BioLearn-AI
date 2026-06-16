@@ -55,7 +55,7 @@ const QuizSetup = ({ onStart, defaultTopic, defaultLevel }) => {
           <input
             value={topic}
             onChange={e => setTopic(e.target.value)}
-            placeholder="Enter a biotechnology topic..."
+            placeholder="e.g., Algebra, Photosynthesis, Grammar, World History..."
             className="input-field"
           />
         </div>

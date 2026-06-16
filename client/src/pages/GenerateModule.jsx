@@ -97,8 +97,8 @@ const GenerateModule = () => {
   };
 
   const suggestedTopics = [
-    'DNA Replication', 'CRISPR-Cas9', 'PCR Technique', 'Cell Respiration',
-    'Protein Synthesis', 'Gene Expression', 'Enzyme Kinetics', 'Bioreactors'
+    'Fractions and Decimals', 'Photosynthesis', 'Past Simple Tense', 'World Geography',
+    'Atoms and Molecules', 'Ecosystems', 'Simple Machines', 'Historical Events'
   ];
 
   return (
@@ -113,7 +113,7 @@ const GenerateModule = () => {
               <BookOpen className="inline w-7 h-7 text-emerald-400 mr-2" />
               Learning Modules
             </h1>
-            <p className="text-slate-400">Generate AI-powered biotechnology learning content</p>
+            <p className="text-slate-400">Generate AI-powered school learning content for subjects like Math, Science, English, and Social Studies.</p>
           </div>
           <div className="flex gap-2">
             <button onClick={() => setView('generate')} className={`btn-outline text-sm px-4 py-2 ${view === 'generate' ? 'bg-emerald-500/20' : ''}`}>
@@ -141,12 +141,12 @@ const GenerateModule = () => {
 
             <form onSubmit={handleGenerate} className="space-y-5">
               <div>
-                <label className="block text-sm font-medium text-slate-300 mb-2">Biotechnology Topic</label>
+                <label className="block text-sm font-medium text-slate-300 mb-2">Subject or Topic</label>
                 <input
                   type="text"
                   value={topic}
                   onChange={e => setTopic(e.target.value)}
-                  placeholder="e.g., CRISPR-Cas9, DNA Replication, Gel Electrophoresis..."
+                  placeholder="e.g., Fractions, Photosynthesis, Grammar rules, World rivers..."
                   className="input-field text-lg"
                   required
                 />

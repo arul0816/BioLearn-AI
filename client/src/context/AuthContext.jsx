@@ -6,18 +6,18 @@ const AuthContext = createContext(null);
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [token, setToken] = useState(localStorage.getItem('biolearn_token'));
+  const [token, setToken] = useState(localStorage.getItem('edulearn_token'));
 
   useEffect(() => {
     const initAuth = async () => {
-      const savedToken = localStorage.getItem('biolearn_token');
+      const savedToken = localStorage.getItem('edulearn_token');
       if (savedToken) {
         try {
           const data = await authService.getMe();
           setUser(data.user);
           setToken(savedToken);
         } catch (error) {
-          localStorage.removeItem('biolearn_token');
+          localStorage.removeItem('edulearn_token');
           setToken(null);
         }
       }
@@ -28,7 +28,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     const data = await authService.login(email, password);
-    localStorage.setItem('biolearn_token', data.token);
+    localStorage.setItem('edulearn_token', data.token);
     setToken(data.token);
     setUser(data.user);
     return data;
@@ -36,14 +36,14 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (name, email, password, level) => {
     const data = await authService.register(name, email, password, level);
-    localStorage.setItem('biolearn_token', data.token);
+    localStorage.setItem('edulearn_token', data.token);
     setToken(data.token);
     setUser(data.user);
     return data;
   };
 
   const logout = () => {
-    localStorage.removeItem('biolearn_token');
+    localStorage.removeItem('edulearn_token');
     setToken(null);
     setUser(null);
   };

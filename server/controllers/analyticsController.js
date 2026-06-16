@@ -121,7 +121,7 @@ exports.getAISuggestions = async (req, res, next) => {
         suggestions: [{
           type: 'welcome',
           title: 'Get Started!',
-          description: 'Generate your first learning module to begin your biotechnology journey.',
+          description: 'Generate your first learning module to begin your school learning journey.',
           priority: 'high'
         }]
       });
@@ -131,7 +131,7 @@ exports.getAISuggestions = async (req, res, next) => {
       `${q.topic} (${q.difficulty}): ${q.percentage?.toFixed(1)}%`
     ).join(', ');
     
-    const prompt = `Based on this biotechnology student's recent quiz performance: ${performanceSummary}
+    const prompt = `Based on this student's recent quiz performance across school subjects: ${performanceSummary}
     
 Generate 3-4 personalized learning suggestions as a JSON array:
 [
@@ -149,7 +149,7 @@ Be specific, actionable, and encouraging. Focus on improvement and next steps.`;
     const completion = await openai.chat.completions.create({
       model: 'gpt-4o-mini',
       messages: [
-        { role: 'system', content: 'You are a supportive AI learning coach for biotechnology students. Respond with JSON only.' },
+        { role: 'system', content: 'You are a supportive AI learning coach for school learners. Respond with JSON only.' },
         { role: 'user', content: prompt }
       ],
       max_tokens: 800,
@@ -160,7 +160,7 @@ Be specific, actionable, and encouraging. Focus on improvement and next steps.`;
     try {
       suggestions = JSON.parse(completion.choices[0].message.content);
     } catch (e) {
-      suggestions = [{ type: 'recommendation', title: 'Keep Learning!', description: 'Continue exploring new biotechnology topics.', priority: 'medium' }];
+      suggestions = [{ type: 'recommendation', title: 'Keep Learning!', description: 'Continue practicing your school subjects and stay consistent.', priority: 'medium' }];
     }
     
     res.json({ suggestions });

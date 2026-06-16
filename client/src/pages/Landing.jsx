@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { Dna, Brain, BarChart3, BookOpen, Zap, ChevronRight, ArrowRight, Shield, Globe, Award } from 'lucide-react';
+import { BookOpen, Brain, BarChart3, Sparkles, Zap, ChevronRight, ArrowRight, Shield, Globe, Award } from 'lucide-react';
 
-const DNABackground = () => {
+const LearningBackground = () => {
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -88,8 +88,8 @@ const Landing = () => {
     {
       icon: Brain,
       title: 'AI-Powered Learning',
-      description: 'GPT 4 generates personalized biotechnology modules tailored to your education level—School, UG, or PG.',
-      gradient: 'bg-gradient-to-br from-emerald-500 to-teal-600'
+      description: 'GPT 4 generates school-friendly learning modules tailored to your grade and study goals.',
+      gradient: 'bg-gradient-to-br from-indigo-500 to-sky-500'
     },
     {
       icon: BookOpen,
@@ -112,7 +112,7 @@ const Landing = () => {
   ];
 
   const stats = [
-    { value: '500+', label: 'Biotech Topics' },
+    { value: '500+', label: 'School Subjects' },
     { value: '3', label: 'Learning Levels' },
     { value: 'GPT 4', label: 'Powered by' },
     { value: '100%', label: 'Adaptive' }
@@ -120,7 +120,7 @@ const Landing = () => {
 
   return (
     <div className="relative min-h-screen bg-slate-950 overflow-hidden">
-      <DNABackground />
+      <LearningBackground />
       
       {/* Gradient overlays */}
       <div className="absolute inset-0 bg-gradient-radial from-emerald-950/50 via-transparent to-transparent pointer-events-none" />
@@ -129,11 +129,11 @@ const Landing = () => {
       {/* Navbar */}
       <nav className="relative z-10 flex items-center justify-between max-w-7xl mx-auto px-6 py-5">
         <div className="flex items-center gap-2.5">
-          <div className="w-10 h-10 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center shadow-lg shadow-emerald-500/30">
-            <Dna className="w-6 h-6 text-white" />
+          <div className="w-10 h-10 bg-gradient-to-br from-indigo-500 to-sky-500 rounded-xl flex items-center justify-center shadow-lg shadow-sky-500/30">
+            <BookOpen className="w-6 h-6 text-white" />
           </div>
           <span className="font-display font-bold text-xl text-white">
-            Bio<span className="gradient-text">Learn</span> AI
+            Edu<span className="gradient-text">Learn</span> AI
           </span>
         </div>
         <div className="flex items-center gap-3">
@@ -150,14 +150,14 @@ const Landing = () => {
         </div>
 
         <h1 className="font-display font-bold text-5xl sm:text-7xl text-white leading-tight mb-6 animate-slide-up">
-          Learn Biotechnology
+          Learn Smarter
           <br />
-          <span className="gradient-text">The Intelligent Way</span>
+          <span className="gradient-text">With School-Friendly AI</span>
         </h1>
 
         <p className="text-slate-400 text-xl max-w-2xl mx-auto mb-10 leading-relaxed animate-fade-in">
-          AI-generated learning modules, adaptive quizzes, and personalized recommendations.
-          Master biotechnology from School to Postgraduate level.
+          AI-powered study guides, adaptive quizzes, and personalized learning paths for school and exam success.
+          Build confidence in Math, Science, English, Social Studies, and more.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in">
@@ -185,10 +185,10 @@ const Landing = () => {
         <div className="text-center mb-12">
           <h2 className="font-display font-bold text-4xl text-white mb-3">
             Everything You Need to
-            <span className="gradient-text"> Master Biotech</span>
+            <span className="gradient-text"> Master School Learning</span>
           </h2>
           <p className="text-slate-400 text-lg max-w-xl mx-auto">
-            A complete AI-powered learning ecosystem designed for biotechnology students at every level.
+            A complete AI-powered learning ecosystem designed for school students to learn with fun, structure, and confidence.
           </p>
         </div>
 
@@ -202,13 +202,13 @@ const Landing = () => {
       {/* How it works */}
       <section className="relative z-10 max-w-4xl mx-auto px-6 py-16">
         <div className="text-center mb-12">
-          <h2 className="font-display font-bold text-4xl text-white mb-3">How BioLearn AI Works</h2>
-          <p className="text-slate-400">Three simple steps to biotechnology mastery</p>
+          <h2 className="font-display font-bold text-4xl text-white mb-3">How EduLearn AI Works</h2>
+          <p className="text-slate-400">Three simple steps to school learning success</p>
         </div>
 
         <div className="space-y-6">
           {[
-            { step: '01', title: 'Choose Your Topic & Level', desc: 'Enter any biotechnology topic and select your academic level—School, UG, or PG.', icon: BookOpen },
+            { step: '01', title: 'Choose Your Subject & Level', desc: 'Enter any school subject and select your academic level—School, UG, or PG.', icon: BookOpen },
             { step: '02', title: 'Get AI-Generated Content', desc: 'GPT 4 creates a structured module with introduction, core concepts, applications, and summary.', icon: Brain },
             { step: '03', title: 'Take Adaptive Quizzes', desc: 'Test your knowledge with auto-generated MCQs. The system adapts based on your performance.', icon: Zap },
           ].map(({ step, title, desc, icon: Icon }) => (
@@ -229,12 +229,12 @@ const Landing = () => {
       {/* CTA */}
       <section className="relative z-10 max-w-3xl mx-auto px-6 py-20 text-center">
         <div className="glass-card p-10 border-emerald-500/20 animate-pulse-glow">
-          <Dna className="w-12 h-12 text-emerald-400 mx-auto mb-4 animate-float" />
+          <BookOpen className="w-12 h-12 text-sky-400 mx-auto mb-4 animate-float" />
           <h2 className="font-display font-bold text-4xl text-white mb-3">
             Ready to Start Learning?
           </h2>
           <p className="text-slate-400 text-lg mb-8">
-            Join students mastering biotechnology with personalized AI assistance.
+            Join students building strong school skills with personalized AI support.
           </p>
           <Link to="/register" className="btn-primary inline-flex items-center gap-2 text-base px-10 py-4">
             Create Free Account <ArrowRight className="w-5 h-5" />
@@ -245,10 +245,10 @@ const Landing = () => {
       {/* Footer */}
       <footer className="relative z-10 border-t border-white/5 py-8 text-center">
         <div className="flex items-center justify-center gap-2 mb-2">
-          <Dna className="w-4 h-4 text-emerald-500" />
-          <span className="font-display font-semibold text-white">BioLearn AI</span>
+          <BookOpen className="w-4 h-4 text-sky-500" />
+          <span className="font-display font-semibold text-white">EduLearn AI</span>
         </div>
-        <p className="text-slate-600 text-sm">LLM-Based Self-Learning Biotechnology Assistant</p>
+        <p className="text-slate-600 text-sm">LLM-Based Self-Learning School Companion</p>
       </footer>
     </div>
   );

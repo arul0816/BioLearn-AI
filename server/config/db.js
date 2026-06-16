@@ -1,7 +1,7 @@
 const { Sequelize } = require('sequelize');
 
 const sequelize = new Sequelize(
-  process.env.DB_NAME || 'biolearn_ai',
+  process.env.DB_NAME || 'edulearn_ai',
   process.env.DB_USER || 'root',
   process.env.DB_PASS || 'Arulkumar@2006',
   {

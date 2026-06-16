@@ -18,7 +18,7 @@ const ProtectedRoute = ({ children }) => {
     <div className="min-h-screen bg-slate-950 flex items-center justify-center">
       <div className="flex flex-col items-center gap-4">
         <div className="w-16 h-16 border-4 border-emerald-500/30 border-t-emerald-500 rounded-full animate-spin" />
-        <p className="text-emerald-400 font-body">Loading BioLearn AI...</p>
+        <p className="text-emerald-400 font-body">Loading EduLearn AI...</p>
       </div>
     </div>
   );

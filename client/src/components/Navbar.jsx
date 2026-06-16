@@ -3,9 +3,8 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
 import {
-  Dna,
-  LayoutDashboard,
   BookOpen,
+  LayoutDashboard,
   Brain,
   BarChart3,
   User,
@@ -46,11 +45,11 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/dashboard" className="flex items-center gap-2">
-            <div className="w-9 h-9 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center">
-              <Dna className="w-5 h-5 text-white" />
+            <div className="w-9 h-9 bg-gradient-to-br from-indigo-500 to-sky-500 rounded-xl flex items-center justify-center">
+              <BookOpen className="w-5 h-5 text-white" />
             </div>
             <span className="font-bold text-lg text-white hidden sm:block">
-              Bio<span className="text-emerald-400">Learn</span> AI
+              Edu<span className="text-sky-400">Learn</span> AI
             </span>
           </Link>
 

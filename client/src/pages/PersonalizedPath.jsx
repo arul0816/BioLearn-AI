@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 
-const BIOTECH_TOPICS = [
-  "Molecular Biology",
-  "Genetics & Genomics",
-  "Cell Biology",
-  "Immunology",
-  "Microbiology",
-  "Bioprocess Engineering",
-  "Bioinformatics",
-  "Genetic Engineering & CRISPR",
-  "Proteomics",
-  "Drug Discovery & Pharmacology",
-  "Industrial Biotechnology",
+const SCHOOL_TOPICS = [
+  "Mathematics",
+  "Science",
+  "English",
+  "Social Studies",
+  "Computer Basics",
+  "Environmental Studies",
+  "Physics",
+  "Chemistry",
+  "History",
+  "Geography",
+  "Language Arts",
 ];
 
 const LEVELS = ["Beginner", "Intermediate", "Advanced"];
@@ -32,47 +32,47 @@ function buildPath(topic, level, goal) {
       duration: "3–5 days",
       focus: [
         "Key definitions and fundamental concepts",
-        "Essential biological molecules and pathways related to the topic",
-        "High‑yield diagrams, charts, and concept maps",
+        "Everyday examples and simple analogies for the topic",
+        "High-yield diagrams, charts, and concept maps",
       ],
       type: "Conceptual",
     },
     {
-      title: `2. Core Concepts & Mechanisms`,
+      title: `2. Core Concepts & Practice`,
       duration: "5–7 days",
       focus: [
-        "Step‑wise mechanisms (with flowcharts)",
-        "Important enzymes, genes, and regulatory checkpoints",
-        "Typical exam / viva questions on this module",
+        "Step-by-step explanations with sample problems",
+        "Important terms, formulas, and study strategies",
+        "Typical exam questions and practice worksheets",
       ],
       type: "Core",
     },
     {
-      title: `3. Lab Skills & Experimental Design`,
+      title: `3. Skill Building & Worked Examples`,
       duration: "4–6 days",
       focus: [
-        "Relevant wet‑lab techniques (e.g., PCR, electrophoresis, cloning, culture)",
-        "Common troubleshooting points and sources of error",
-        "How to write observation, results, and inference in records",
+        "Guided practice problems and example solutions",
+        "Common mistakes to avoid and helpful shortcuts",
+        "How to write strong answers and explanations clearly",
       ],
       type: "Practical",
     },
     {
-      title: `4. Application & Case Studies`,
+      title: `4. Real-World Uses & Stories`,
       duration: "3–4 days",
       focus: [
-        "Real‑world applications of the topic (clinical, industrial or research)",
-        "Short case studies and previous year questions",
-        "Mini‑project ideas you can actually implement",
+        "Everyday applications of the topic at school and home",
+        "Short case studies and relatable examples",
+        "Small projects or experiments you can try safely",
       ],
       type: "Application",
     },
     {
-      title: `5. Revision & Self‑Assessment`,
+      title: `5. Revision & Self-Assessment`,
       duration: "2–3 days",
       focus: [
-        "Timed quizzes and flash‑card style revision",
-        "Summarising each subtopic in one page",
+        "Timed quizzes and flash-card style revision",
+        "Summarising each idea in simple notes",
         "Creating your own question bank from weak areas",
       ],
       type: "Revision",
@@ -153,10 +153,10 @@ const PersonalizedPath = () => {
             Personalized Learning Path
           </h1>
           <p className="text-sm text-slate-300 max-w-2xl">
-            Design a learning route tailored to your{" "}
+            Design a learning route tailored to your
             <span className="font-semibold text-sky-300">
-              biotechnology
-            </span>{" "}
+              school subjects
+            </span>
             interests, current level, and weekly study time.
           </p>
         </div>
@@ -174,7 +174,7 @@ const PersonalizedPath = () => {
             {/* topic */}
             <div className="space-y-2">
               <label className="text-sm font-medium text-slate-100">
-                Preferred biotechnology topic
+                Preferred school subject or topic
                 <span className="text-red-400 ml-0.5">*</span>
               </label>
               <select
@@ -184,7 +184,7 @@ const PersonalizedPath = () => {
                 required
               >
                 <option value="">Select a topic</option>
-                {BIOTECH_TOPICS.map((t) => (
+                {SCHOOL_TOPICS.map((t) => (
                   <option key={t} value={t}>
                     {t}
                   </option>
@@ -197,12 +197,12 @@ const PersonalizedPath = () => {
                   type="text"
                   value={customTopic}
                   onChange={(e) => setCustomTopic(e.target.value)}
-                  placeholder="Enter your specific biotechnology topic"
+                  placeholder="Enter a specific subject or topic (e.g., algebra, grammar, ecosystems)"
                   className="w-full bg-slate-950/70 border border-slate-800 rounded-lg px-3 py-2.5 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500"
                 />
               )}
               <p className="text-xs text-slate-400">
-                Examples: Genomics, CRISPR, Cancer biology, Stem cell technology, Fermentation technology.
+                Examples: Algebra, Photosynthesis, Narrative writing, World maps, Human body systems.
               </p>
             </div>
 
@@ -312,7 +312,7 @@ const PersonalizedPath = () => {
                 </p>
                 <p>
                   You will get a step‑by‑step learning path tailored for{" "}
-                  biotechnology students, including concepts, lab skills, and
+                  school learners, including concepts, study skills, and
                   revision.
                 </p>
               </div>
@@ -383,7 +383,7 @@ const PersonalizedPath = () => {
             <span className="text-sky-300 font-medium">
               existing dashboard, quizzes, and feedback form
             </span>{" "}
-            to track how your understanding in biotechnology improves week by week.
+            to track how your school understanding improves week by week.
           </div>
         </section>
       </main>

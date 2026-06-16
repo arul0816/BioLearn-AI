@@ -3,7 +3,7 @@ import axios from 'axios';
 const API_URL = '/api/auth';
 
 const getAuthHeader = () => {
-  const token = localStorage.getItem('biolearn_token');
+  const token = localStorage.getItem('edulearn_token');
   return token ? { Authorization: `Bearer ${token}` } : {};
 };
 

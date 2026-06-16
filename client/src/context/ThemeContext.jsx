@@ -6,7 +6,7 @@ const ThemeContext = createContext(null);
 export const ThemeProvider = ({ children }) => {
   const [isDark, setIsDark] = useState(() => {
     if (typeof window === "undefined") return true;
-    const saved = localStorage.getItem("biolearn_theme");
+    const saved = localStorage.getItem("edulearn_theme");
     if (saved === "dark") return true;
     if (saved === "light") return false;
     // default: dark
@@ -17,10 +17,10 @@ export const ThemeProvider = ({ children }) => {
     const root = window.document.documentElement;
     if (isDark) {
       root.classList.add("dark");
-      localStorage.setItem("biolearn_theme", "dark");
+      localStorage.setItem("edulearn_theme", "dark");
     } else {
       root.classList.remove("dark");
-      localStorage.setItem("biolearn_theme", "light");
+      localStorage.setItem("edulearn_theme", "light");
     }
   }, [isDark]);
 

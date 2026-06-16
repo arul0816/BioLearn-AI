@@ -1,7 +1,7 @@
 {
-  "name": "biolearn-ai-server",
+  "name": "edulearn-ai-server",
   "version": "1.0.0",
-  "description": "BioLearn AI Backend - Node.js/Express API",
+  "description": "EduLearn AI Backend - Node.js/Express API",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

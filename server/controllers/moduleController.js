@@ -12,11 +12,11 @@ exports.generateModule = async (req, res, next) => {
       return res.status(400).json({ error: 'Topic and level are required.' });
     }
 
-    const prompt = `You are an expert biotechnology professor. Create a comprehensive, structured learning module on "${topic}" for ${level} level students.
+    const prompt = `You are an expert school curriculum teacher. Create a comprehensive, structured learning module on "${topic}" for ${level} level students.
 
 Format your response as a valid JSON object with this exact structure:
 {
-  "introduction": "A clear 2-3 paragraph introduction to the topic, its importance in biotechnology, and what students will learn. Include historical context.",
+  "introduction": "A clear 2-3 paragraph introduction to the topic, its importance for school learning, and what students will learn.",
   "coreConcepts": [
     {
       "title": "Concept title",
@@ -39,15 +39,15 @@ Format your response as a valid JSON object with this exact structure:
 
 Tailor the complexity and depth to ${level} students:
 - School: Simple language, basic concepts, relatable analogies
-- UG: Moderate depth, molecular mechanisms, standard terminology  
-- PG: Advanced concepts, current research, technical details, recent breakthroughs
+- UG: Moderate depth, clear explanations, practical examples
+- PG: Advanced understanding, deeper reasoning, connections to real-world projects
 
 Topic: ${topic}`;
 
     const completion = await openai.chat.completions.create({
       model: 'gpt-4o-mini',
       messages: [
-        { role: 'system', content: 'You are an expert biotechnology professor who creates educational content. Always respond with valid JSON only, no markdown.' },
+        { role: 'system', content: 'You are an expert school educator who creates structured learning content. Always respond with valid JSON only, no markdown.' },
         { role: 'user', content: prompt }
       ],
       max_tokens: 3000,
